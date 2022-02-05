@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case "d":
-               // MoveDown();
+                MoveDown();
                 break;
 
             case "r":
@@ -70,6 +70,37 @@ public class GameManager : MonoBehaviour
     public void MoveDown()
     {
 
+        //add new rooms
+        fill(10, 9);
+
+        //shifts the rooms inside of the grid
+        for (int i = 0; i < gridsize; i++)//i =ypos
+        {
+            for (int b = (gridsize-1); b >0; b--)// b = xpos
+            {
+                grid.Set(i, b, grid.Get(i, b-1));
+
+                if (grid.Get(i, b) != null)
+                {
+                    grid.Get(i, b).transform.position = new Vector3(grid.Get(i, b).transform.position.x, grid.Get(i, b).transform.position.y +10);
+                }
+            }
+        }
+
+
+        //deletes the rooms
+        for (int i = 0; i < gridsize; i++)
+        {
+            Destroy(grid.Get(i, 0));
+            grid.Set(i, 0, null);
+            Destroy(grid.Get(i, (gridsize - 1)));
+            grid.Set(i, (gridsize - 1), null);
+
+        }
+
+        //shifts the player and the camera accordingly
+        player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y+3);
+        Debug.Log("Moved downwards");
     }
 
     public void MoveUp()
@@ -82,9 +113,9 @@ public class GameManager : MonoBehaviour
         //shifts the rooms inside of the grid
         for (int i = 0; i < gridsize; i++)//i =ypos
         {
-            for (int b = (gridsize-1); b >0; b--)// b = xpos
+            for (int b = 0; b <(gridsize-1); b++)// b = xpos
             {
-                grid.Set(i,b, grid.Get(i, b-1));
+                grid.Set(i,b, grid.Get(i, b+1)); 
 
                 if (grid.Get(i,b) != null)
                 {

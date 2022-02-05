@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Grid<T> 
+public class Grid<T>
 {
 
     T[,] grid = new T[21, 21]; //10,10 is the postion of the player
 
-    public void Set(int x , int y, T element)
+    public void Set(int x, int y, T element)
     {
-        if (element != null || x >= 0 || y >= 0)
+        if (x >= 0 && y >= 0)
         {
             grid[x, y] = element;
         }
@@ -23,18 +23,25 @@ public class Grid<T>
     public string printall()
     {
         string temp = "";
-        for (int i = 0; i< 21;i++)
+        for (int i = 0; i < 21; i++)
         {
-            
-            for (int b = 0; b < 21;b++)
+
+            for (int b = 0; b < 21; b++)
             {
-             if(grid[b,i] != null)
+                if (grid[b, i] != null)
                 {
-                    temp += "| |";    
+                    if (b >= 10)
+                    { 
+                        temp += "|..|"; 
+                    }
+                    else
+                    {
+                        temp += "|.|";
+                    }
                 }
-             else
+                else
                 {
-                    temp += "|f|";
+                    temp += "|" + b + "|";
                 }
             }
             temp += "\n";
@@ -44,7 +51,7 @@ public class Grid<T>
 
     public T Get(int x, int y)
     {
-        if (x >= 0 || y >= 0)
+        if (x > -1 && y > -1)
         {
             return grid[x, y];
         }
