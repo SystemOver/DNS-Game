@@ -31,26 +31,18 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         body.velocity = new Vector2(body.velocity.x,verticalInput * speed);
 
-    }
+    }    
 
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag.Equals("Enemy"))
-            GameOver();
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
+     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("Coin"))
         {
             Destroy(collision.gameObject);
+            GameManager.Instance.coins++;
+            GameManager.Instance.updateUI();
             //FindObjectOfType<AudioManager>().Play("pickup");
         }
     }
 
-    public void GameOver()
-    {
-        Destroy(gameObject);
-    }
+    
 }

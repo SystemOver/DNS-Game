@@ -16,7 +16,11 @@ public class Door : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameManager.Instance.Move(type);
+
+        if (collision.gameObject.name.Contains("Player"))
+        {
+            GameManager.Instance.Move(type);
+        }
         
     }
 }
