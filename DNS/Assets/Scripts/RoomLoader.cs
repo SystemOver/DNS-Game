@@ -26,17 +26,5 @@ public class RoomLoader : MonoBehaviour
     {
     }
 
-   
-
-    private void moveUp()
-    {
-        
-    }
-
-    private void moveDown()
-    {
-
-    }
-
     
 }

@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
 
     public int gridsize = 21;
 
+    public int bulletdamage = 1;//the amount of Damage a bullet makes
+    public int strength = 1;//strength of the player when he hits stuff
+
+    public float reach;
+
     public Grid<GameObject> grid = new Grid<GameObject>();
 
     
@@ -116,7 +121,7 @@ public class GameManager : MonoBehaviour
         }
 
         //shifts the player and the camera accordingly
-        player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 3);
+        player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 5.5f);
         Debug.Log("Moved downwards");
     }
 
@@ -158,7 +163,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("deletet edges");
 
         //shifts the player and the camera accordingly
-        player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 3);
+        player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 5.5f);
 
         Debug.Log("Moved Upwards");
     }
@@ -195,7 +200,7 @@ public class GameManager : MonoBehaviour
         }
 
         //shifts the player and the camera accordingly
-        player.transform.position = new Vector3(player.transform.position.x + 5, player.transform.position.y);
+        player.transform.position = new Vector3(player.transform.position.x + 15, player.transform.position.y);
         Debug.Log("Moved to the left");
     }
 
@@ -232,7 +237,7 @@ public class GameManager : MonoBehaviour
         }
 
         //shifts the player and the camera accordingly
-        player.transform.position = new Vector3(player.transform.position.x - 5, player.transform.position.y);
+        player.transform.position = new Vector3(player.transform.position.x - 15, player.transform.position.y);
 
 
         Debug.Log("Moved to the Right");

@@ -8,12 +8,13 @@ public class enemy : MonoBehaviour
     [SerializeField] private float Speed;
     [SerializeField] private float Waittime;
 
-    GameObject player;
+    [SerializeField] GameObject player;
 
     Rigidbody2D rigidbody;
 
     float startTime;
 
+    public int lives;
 
     bool waited = false;
 
@@ -47,6 +48,26 @@ public class enemy : MonoBehaviour
             {
                 this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, Speed);
             }
+        }
+    }
+
+    /*public void areaAttack()
+    {
+        player.GetComponent<PlayerMovement>().attackE
+            float distance = Vector3.Distance(this.transform.position, player.transform.position);
+            if (distance < GameManager.Instance.reach)
+            {
+            reducelive();
+            }
+        
+    }*/
+
+    public void reducelive(int damage)
+    {
+        lives-=damage;
+        if(lives <= 0)
+        {
+            Destroy(this.gameObject);
         }
     }
 

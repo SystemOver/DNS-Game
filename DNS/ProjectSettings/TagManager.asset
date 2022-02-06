@@ -9,6 +9,7 @@ TagManager:
   - Updoor
   - Downdoor
   - Coin
+  - Enemy
   layers:
   - Default
   - TransparentFX

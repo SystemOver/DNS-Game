@@ -103,6 +103,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   UI: {fileID: 0}
+  Bullet: {fileID: 2217966455450601111, guid: 496fbf37644fa6a4ca6b7b40b0151bf9, type: 3}
+  maxdistance: 2
 --- !u!61 &6116649402783841184
 BoxCollider2D:
   m_ObjectHideFlags: 0
